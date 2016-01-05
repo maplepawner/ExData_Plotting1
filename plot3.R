@@ -1,0 +1,16 @@
+png(filename = "plot3.png", width = 480, height = 480)
+power = read.table("household_power_consumption.txt",header = TRUE, sep = ";")
+plot.ts(power$Sub_metering_2, ylab="Energy Sub Metering",xlab="",axes=FALSE,col="red",ylim=c(0,30))
+par(new = TRUE)
+plot.ts(power$Sub_metering_3,ylab="",xlab="",axes=FALSE,col="blue",ylim=c(0,30))
+par(new = TRUE)
+plot.ts(power$Sub_metering_1,ylab="",xlab="",axes=FALSE)
+
+axis(side=2, labels=TRUE)
+tick <- c(0, 1440, 2880)
+labels<- c("Thu","Fri","Sat")
+axis(side=1,at=tick,labels=labels)
+box()
+legend("topright",legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lty=c(1,1,1),col=c("black","red","blue"))
+dev.off()
+
